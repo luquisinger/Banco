@@ -2,6 +2,7 @@
 using Banco.Sistemas;
 using System;
 using System.Diagnostics;
+using System.Numerics;
 using System.Security.Authentication;
 
 namespace Banco
@@ -10,39 +11,47 @@ namespace Banco
     {
         static void Main(string[] args)
         {
+            //try
+            //{
+            //    ContaCorrente conta = new ContaCorrente(345, 100);
+            //    ContaCorrente conta2 = new ContaCorrente(1, 52);
+            //    conta.Depositar(50);
+            //    Console.WriteLine(conta.Saldo);
+            //    conta.Transferir(2000, conta2);
+            //    Console.WriteLine(conta.Saldo);
+            //    conta.Sacar(5);
+
+            //}
+            //catch(ArgumentException ex)
+            //{
+            //    Console.WriteLine("Argumento com problema: " + ex.ParamName);
+            //    Console.WriteLine("Ocorreu uma excecao do tipo ArgumentException ");
+            //    Console.WriteLine(ex.Message);
+
+            //}
+            //catch (SaldoInsuficienteException ex)
+            //{
+            //    Console.WriteLine(ex.Saldo);
+            //    Console.WriteLine(ex.ValorSaque);
+
+            //    Console.WriteLine(ex.StackTrace);
+
+            //    Console.WriteLine(ex.Message);
+            //    Console.WriteLine("Erro: Saldo insuficiente");
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
             try
             {
-                ContaCorrente conta = new ContaCorrente(345, 100);
-                ContaCorrente conta2 = new ContaCorrente(1, 52);
-                conta.Depositar(50);
-                Console.WriteLine(conta.Saldo);
-                conta.Transferir(2000, conta2);
-                Console.WriteLine(conta.Saldo);
-                conta.Sacar(5);
-
+                CarregarContas();
             }
-            catch(ArgumentException ex)
+            catch (Exception)
             {
-                Console.WriteLine("Argumento com problema: " + ex.ParamName);
-                Console.WriteLine("Ocorreu uma excecao do tipo ArgumentException ");
-                Console.WriteLine(ex.Message);
-
+                Console.WriteLine("CATCH NO METODO MAIN");
             }
-            catch (SaldoInsuficienteException ex)
-            {
-                Console.WriteLine(ex.Saldo);
-                Console.WriteLine(ex.ValorSaque);
-
-                Console.WriteLine(ex.StackTrace);
-
-                Console.WriteLine(ex.Message);
-                Console.WriteLine("Erro: Saldo insuficiente");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            Metodo();
+            //Metodo();
 
 
             //try
@@ -61,8 +70,8 @@ namespace Banco
             //}
             //CalcularBonificacao();
             //UsarSistema();
-            
-          
+
+
             //GerenciadorBonificacao gerenciador = new GerenciadorBonificacao();
 
 
@@ -110,11 +119,54 @@ namespace Banco
             //contaDoBruno.Depositar(500);
             //Console.WriteLine(contaDoBruno.saldo);
 
-            
+
 
 
             Console.ReadLine();
         }
+
+        private static void CarregarContas()
+        {
+            using(LeitorDeArquivos leitor = new LeitorDeArquivos("teste.txt"))
+            {
+                leitor.LerProximaLinha();
+            }
+            //LeitorDeArquivos leitor = null;            
+            //try
+            //{
+            //    leitor = new LeitorDeArquivos("contas1.txt");
+            //    leitor.LerProximaLinha();
+            //    leitor.LerProximaLinha();
+            //    leitor.LerProximaLinha();
+            //} 
+            
+            //finally
+            //{
+            //    Console.WriteLine("executando o finally");
+            //    if (leitor != null)
+            //    {
+            //        leitor.Fechar();
+            //    }
+            //}
+            
+        }
+        private static void TestaInnerException()
+        {
+            try
+            {
+                ContaCorrente conta1 = new ContaCorrente(4564, 789684);
+                ContaCorrente conta2 = new ContaCorrente(7891, 456794);
+
+                // conta1.Transferir(10000, conta2);
+                conta1.Sacar(10000);
+            }
+            catch (OperacaoFinanceiraException e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
+            }
+        }
+
 
         private static void Metodo()
         {
