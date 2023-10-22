@@ -21,6 +21,6 @@ namespace Banco.Funcionarios
             TotalDeFuncionarios++;
         }
         public abstract void AumentarSalario();
-        public abstract double GetBonificacao();
+        internal protected abstract double GetBonificacao();
     }
 }

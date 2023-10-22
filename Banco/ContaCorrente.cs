@@ -2,6 +2,9 @@
 
 namespace Banco
 {
+    ///<sumary>
+    /// Define uma Conta Corrente do banco ByteBank.
+    ///</sumary>
     public class ContaCorrente
     {
         public static double TaxaOperacao {  get; private set; }
@@ -27,7 +30,11 @@ namespace Banco
                 _saldo = value;
             }
         }
-       
+        ///<summary>
+        ///Cria uma instância de ContaCorrente com os argumentos utilizados.
+        /// <summary>
+        ///<param name="agencia">Representa o valor da proprieddae <see cref="Agencia" /> e deve possuir um valor maior que zero.</param>
+        ///<param name="numero">Representa o valor da proprieddae <see cref="Numero"/> e deve possuir um valor maior que zero.</param>
         public ContaCorrente(int agencia, int numero) 
         {
 
