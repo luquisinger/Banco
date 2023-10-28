@@ -1,6 +1,7 @@
 ﻿
 
 using Banco.Funcionarios;
+using Banco.SistemaAgencia.Extensoes;
 using System.Text.RegularExpressions;
 
 namespace Banco.SistemaAgencia
@@ -9,32 +10,59 @@ namespace Banco.SistemaAgencia
     {
         static void Main(string[] args)
         {
+            List <int> idades = new List<int>();
+            idades.Add(5);
             
+            idades.AdicionarVarios(6,4,5);
+            idades.Remove(5);
+
+
+
+
+            //ListaExtensoes.AdicionarVarios(idades, 6,4,7);
+            //idades.AdicionarVarios(8, 9, 10);
+            //idades.AddRange(new int[] { 1, 2, 3, 4 });
+            for(int i = 0; i < idades.Count; i++)
+            {       
+                Console.WriteLine(idades[i]);
+            }
+
             Console.ReadLine();
+        }
+
+        static void TestaListaObject()
+        {
+            ListaDeObject listaDeIdades = new ListaDeObject();
+            listaDeIdades.AdicionarVarios(1, 2, 3, 4);
+            for (int i = 0; i < listaDeIdades.TamanhoDaLista; i++)
+            {
+                int idade = (int)listaDeIdades[i];
+                Console.WriteLine($"Idade non indice {i}: {idade}");
+            }
         }
         static void TestaListaDeContaCorrente()
         {
             ListaDeContaCorrente lista = new ListaDeContaCorrente();
-            lista.Adicionar(new ContaCorrente(874, 5679787));
-            lista.Adicionar(new ContaCorrente(874, 5679754));
-            lista.Adicionar(new ContaCorrente(874, 5679745));
-            lista.Adicionar(new ContaCorrente(874, 5679754));
-            lista.Adicionar(new ContaCorrente(874, 5679745));
-            lista.Adicionar(new ContaCorrente(874, 5679754));
-            lista.Adicionar(new ContaCorrente(874, 5679745));
+            lista.Adicionar(new @object(874, 5679787));
+            lista.Adicionar(new @object(874, 5679754));
+            lista.Adicionar(new @object(874, 5679745));
+            lista.Adicionar(new @object(874, 5679754));
+            lista.Adicionar(new @object(874, 5679745));
+            lista.Adicionar(new @object(874, 5679754));
+            lista.Adicionar(new @object(874, 5679745));
 
-            ContaCorrente[] contas = new ContaCorrente[]
+            @object[] contas = new @object[]
             {
 
-                new ContaCorrente(874, 5679787),
-                new ContaCorrente(874, 5679754)
+                new @object(874, 5679787),
+                new @object(874, 5679754)
             };
             lista.AdicionarVarios(contas);
             lista.AdicionarVarios
                 (
-                    new ContaCorrente(874, 5679745),
-                    new ContaCorrente(874, 5679754),
-                    new ContaCorrente(874, 5679745)
+                    new @object(874, 5679745),
+                    new @object(874, 5679754),
+                    new @object(874, 5679745)
                 );
             static int SomarVarios(params int[] numeros)
             {
@@ -49,27 +77,27 @@ namespace Banco.SistemaAgencia
             for (int i = 0; i < lista.TamanhoDaLista; i++)
             {
 
-                ContaCorrente teste = lista[i];
+                @object teste = lista[i];
 
-                ContaCorrente itemAtual = lista[i];
+                @object itemAtual = lista[i];
                 Console.WriteLine($"Item na posição {i} = Conta {itemAtual.Numero}/{itemAtual.Agencia}");
             }
 
         }
         public static void TestaArray2()
         {
-            ContaCorrente[] contas = new ContaCorrente[]
+            @object[] contas = new @object[]
             {
-                new ContaCorrente(123, 123),
-                new ContaCorrente(874, 4456668),
-                new ContaCorrente(874, 7781438)
+                new @object(123, 123),
+                new @object(874, 4456668),
+                new @object(874, 7781438)
              };
 
 
 
             for (int indice = 0; indice <= contas.Length; indice++)
             {
-                ContaCorrente conta = contas[indice];
+                @object conta = contas[indice];
                 Console.WriteLine($"Conta {indice} = {conta.Numero}");
             }
         }

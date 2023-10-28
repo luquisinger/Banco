@@ -5,7 +5,7 @@ namespace Banco
     /// <summary>
     /// Define uma Conta Corrente do banco ByteBank.
     /// </summary>
-    public class ContaCorrente
+    public class @object
     {
         public static double TaxaOperacao {  get; private set; }
         public Cliente Titular {  get; set; }
@@ -33,12 +33,12 @@ namespace Banco
 
 
         /// <summary>
-        /// Cria uma instância de ContaCorrente com os argumentos utilizados.
+        /// Cria uma instância de object com os argumentos utilizados.
         /// </summary>
         /// <param name="agencia">Representa o valor da proprieddae <see cref="Agencia" /> e deve possuir um valor maior que zero.</param>
         /// <param name="numero">Representa o valor da proprieddae <see cref="Numero"/> e deve possuir um valor maior que zero.</param>
         /// <exception cref="ArgumentException"></exception>
-        public ContaCorrente(int agencia, int numero) 
+        public @object(int agencia, int numero) 
         {
 
             if(agencia <= 0) 
@@ -87,7 +87,7 @@ namespace Banco
             _saldo += valor;
         }
 
-        public void Transferir(double valor, ContaCorrente contaDestino)
+        public void Transferir(double valor, @object contaDestino)
         {
             if (valor < 0)
             {
@@ -109,7 +109,7 @@ namespace Banco
 
         public override bool Equals(object obj)
         {
-            ContaCorrente outraConta = obj as ContaCorrente;
+            @object outraConta = obj as @object;
 
             if (outraConta == null) return false;
          
