@@ -1,6 +1,7 @@
 ﻿
 
 using Banco.Funcionarios;
+using Banco.SistemaAgencia.Comparador;
 using Banco.SistemaAgencia.Extensoes;
 using System.Text.RegularExpressions;
 
@@ -10,26 +11,71 @@ namespace Banco.SistemaAgencia
     {
         static void Main(string[] args)
         {
-            List <int> idades = new List<int>();
-            idades.Add(5);
             
-            idades.AdicionarVarios(6,4,5);
+
+            Console.ReadLine();
+        }
+        static void Ordeanar()
+        {
+            var idades = new List<int>();
+            idades.Add(5);
+
+
+            idades.AdicionarVarios(6, 4, 5);
+            idades.Sort();
             idades.Remove(5);
 
+            var nomes = new List<string>()
+            {
+                "m,atgeyus",
+                "sbdifv"
+            };
+            nomes.AdicionarVarios("joao", "grebio");
+            foreach (var nome in nomes)
+            {
+                Console.WriteLine(nome);
+            }
+
+            var contas = new List<ContaCorrente>()
+            {
+                new ContaCorrente(123,123),
+                null,
+                new ContaCorrente(212,213),
+                new ContaCorrente(21452,2173),
+                new ContaCorrente(65612,45),
+            };
+            //var ListaSemNulos = new List<ContaCorrente>();
+            //    foreach (var conta in contas)
+            //    {
+            //        if (conta != null)
+            //        {
+            //            ListaSemNulos.Add(conta);
+            //        }
+            //    }   
+
+            //contas.Sort();
+            //IOrderedEnumerable<ContaCorrente> listaOrdenada 
+            //    = ContasNaoNulas.OrderBy<ContaCorrente, int>(conta => conta.Numero);
+            var listaOrdenada = contas
+                 .Where(contas => contas != null)
+                 .OrderBy(conta => conta.Numero);
+
+            //contas.Sort(new ComparadorContaCorrentePorAgencia());
 
 
+            foreach (var conta in listaOrdenada)
+            {
+                Console.WriteLine($"a conta do n {conta.Numero} da agencia {conta.Agencia}");
+            }
 
             //ListaExtensoes.AdicionarVarios(idades, 6,4,7);
             //idades.AdicionarVarios(8, 9, 10);
             //idades.AddRange(new int[] { 1, 2, 3, 4 });
-            for(int i = 0; i < idades.Count; i++)
-            {       
+            for (int i = 0; i < idades.Count; i++)
+            {
                 Console.WriteLine(idades[i]);
             }
-
-            Console.ReadLine();
         }
-
         static void TestaListaObject()
         {
             ListaDeObject listaDeIdades = new ListaDeObject();
